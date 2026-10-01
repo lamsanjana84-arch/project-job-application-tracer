@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>JobTrack - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="admin-sidebar">
+
+    <div class="admin-logo">
+
+        <div class="admin-logo-box">
+            💼
+        </div>
+
+        <span>JobTrack</span>
+
+    </div>
+
+
+    <nav class="admin-nav">
+
+        <a href="#adminDashboard" class="admin-nav-item ">
+            <span>◕</span>
+            Dashboard
+        </a>
+
+        <a href="#usersSection" class="admin-nav-item">
+            <span>👥</span>
+            Users
+        </a>
+
+        <a href="#applicationsSection" class="admin-nav-item">
+            <span>▤</span>
+            Applications
+        </a>
+
+    </nav>
+
+
+    <div class="admin-sidebar-bottom">
+
+        <div class="admin-user">
+
+            <div class="admin-avatar">
+                A
+            </div>
+
+            <div>
+                <strong>Administrator</strong>
+                <small>Admin</small>
+            </div>
+
+        </div>
+
+
+        <button
+            id="adminLogoutBtn"
+            class="admin-logout-btn"
+            onclick="logout()">
+
+            ⇥ Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="admin-main" id="adminDashboard">
+
+
+    <!-- HEADER -->
+
+    <header class="admin-topbar">
+
+        <div>
+
+            <h1>Admin Dashboard</h1>
+
+            <p>
+                Manage JobTrack users and applications.
+            </p>
+
+        </div>
+
+        <div class="admin-welcome">
+            🛡️ Admin Panel
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= STAT CARDS ================= -->
+
+    <section class="admin-stats">
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon blue">
+                👥
+            </div>
+
+            <div>
+
+                <p>Total Users</p>
+
+                <h2 id="totalUsers">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon orange">
+                ▤
+            </div>
+
+            <div>
+
+                <p>Total Applications</p>
+
+                <h2 id="totalApplicationsAdmin">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon purple">
+                ◷
+            </div>
+
+            <div>
+
+                <p>Interviews</p>
+
+                <h2 id="totalInterviews">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon green">
+                ✓
+            </div>
+
+            <div>
+
+                <p>Selected</p>
+
+                <h2 id="totalSelected">
+                    0
+                </h2>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= USERS ================= -->
+
+    <section
+        class="admin-panel"
+        id="usersSection">
+
+        <div class="admin-section-heading">
+
+            <div>
+
+                <h2>Registered Users</h2>
+
+                <p>
+                    Users who have created a JobTrack account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-table-container">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Role</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="userList">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= APPLICATIONS ================= -->
+
+    <section
+        class="admin-panel"
+        id="applicationsSection">
+
+        <div class="admin-section-heading">
+
+            <div>
+
+                <h2>Job Applications</h2>
+
+                <p>
+                    Overview of applications submitted by users.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SEARCH / FILTER -->
+
+        <div class="admin-filters">
+
+            <input
+                type="text"
+                id="adminSearch"
+                placeholder="Search company or role..."
+                onkeyup="filterAdminApplications()">
+
+
+            <select
+                id="adminStatusFilter"
+                onchange="filterAdminApplications()">
+
+                <option value="all">
+                    All Status
+                </option>
+
+                <option value="Applied">
+                    Applied
+                </option>
+
+                <option value="Shortlisted">
+                    Shortlisted
+                </option>
+
+                <option value="Interview">
+                    Interview
+                </option>
+
+                <option value="Selected">
+                    Selected
+                </option>
+
+                <option value="Rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="admin-table-container">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Company</th>
+
+                        <th>Job Role</th>
+
+                        <th>Status</th>
+
+                        <th>Priority</th>
+
+                        <th>Application Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminApplications">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>

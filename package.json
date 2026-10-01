@@ -1,0 +1,16 @@
+{
+  "name": "job-application-tracker",
+  "version": "1.0.0",
+  "description": "Online Job Application Tracker",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "JobTrack",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^39.1.0",
+    "electron-builder": "^26.0.12"
+  }
+}

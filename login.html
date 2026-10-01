@@ -1,0 +1,206 @@
+><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+    <div class="login-container">
+
+        <div class="login-header">
+          <h1>JobTrack</h1>
+            <p>Job Application Tracker</p>
+        </div>
+
+        <div class="login-card">
+
+            <!-- USER / ADMIN TABS -->
+            <div class="login-type">
+
+                <button type="button"
+                        id="userTab"
+                        class="login-tab active"
+                        onclick="selectLoginType('user')">
+                    👤 User Login
+                </button>
+
+                <button type="button"
+                        id="adminTab"
+                        class="login-tab"
+                        onclick="selectLoginType('admin')">
+                    🛡️ Admin Login
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN SECTION -->
+            <div id="loginSection">
+
+                <h2 id="loginTitle">User Login</h2>
+
+                <p class="login-subtitle">
+                    Login to manage your job applications
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="login-input-group">
+                        <label>Email Address</label>
+
+                        <input type="email"
+                               id="loginEmail"
+                               placeholder="Enter your email"
+                               required>
+                    </div>
+
+
+                    <div class="login-input-group">
+                        <label>Password</label>
+
+                        <div class="password-box">
+
+                            <input type="password"
+                                   id="loginPassword"
+                                   placeholder="Enter your password"
+                                   required>
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    onclick="togglePassword()">
+                                👁
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                    <div class="remember-row">
+
+                        <label>
+                            <input type="checkbox"
+                                   id="rememberCredentials">
+
+                            <span>Remember my credentials</span>
+                        </label>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="login-button">
+                        Login
+                    </button>
+
+                </form>
+
+
+                <!-- ONLY USER CAN CREATE ACCOUNT -->
+                <div class="signup-area" id="signupArea">
+
+                    <span>Don't have an account?</span>
+
+                    <button type="button"
+                            onclick="showSignup()">
+                        Create Account
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIGNUP SECTION -->
+            <div id="signupSection" style="display: none;">
+
+                <h2>Create Account</h2>
+
+                <p class="login-subtitle">
+                    Create your JobTrack user account
+                </p>
+
+                <form id="signupForm">
+
+                    <div class="login-input-group">
+
+                        <label>Full Name</label>
+
+                        <input type="text"
+                               id="signupName"
+                               placeholder="Enter your full name"
+                               required>
+
+                    </div>
+
+
+                    <div class="login-input-group">
+
+                        <label>Email Address</label>
+
+                        <input type="email"
+                               id="signupEmail"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+
+                    <div class="login-input-group">
+
+                        <label>Password</label>
+
+                        <div class="password-box">
+
+                            <input type="password"
+                                   id="signupPassword"
+                                   placeholder="Create a password"
+                                   required>
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    onclick="toggleSignupPassword()">
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="login-button">
+                        Create Account
+                    </button>
+
+                </form>
+
+
+                <div class="signup-area">
+
+                    <span>Already have an account?</span>
+
+                    <button type="button"
+                            onclick="showLogin()">
+                        Back to Login
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="auth.js"></script>
+
+</body>
+
+</html>

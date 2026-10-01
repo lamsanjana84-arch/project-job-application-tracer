@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JobTrack - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-box">💼</div>
+
+            <span>JobTrack</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="#dashboard" class="nav-item ">
+
+                <span class="nav-icon">◕</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="#applications" class="nav-item">
+
+                <span class="nav-icon">▤</span>
+
+                <span>Applications</span>
+
+            </a>
+
+
+            <a href="#reminders" class="nav-item">
+
+                <span class="nav-icon">♟</span>
+
+                <span>Reminders</span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <button id="themeBtn" class="side-button">
+
+                🌙 Dark Mode
+
+            </button>
+
+
+            <button id="logoutBtn" class="side-button">
+
+                ⇥ Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main" id="dashboard">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Job Application Tracker</h1>
+
+                <p>
+                    Track your job search and stay organized.
+                </p>
+
+            </div>
+
+
+            <button
+                class="add-application-btn"
+                onclick="openModal()">
+
+                + Add Application
+
+            </button>
+
+        </header>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-circle blue-circle">
+                    <span>▤</span>
+                </div>
+
+                <div>
+
+                    <p>Total Applications</p>
+
+                    <h2 id="totalApplications">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-circle orange-circle">
+                    <span>◷</span>
+                </div>
+
+                <div>
+
+                    <p>In Progress</p>
+
+                    <h2 id="inProgress">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-circle purple-circle">
+                    <span>▣</span>
+                </div>
+
+                <div>
+
+                    <p>Interviews</p>
+
+                    <h2 id="interviews">0</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-circle green-circle">
+                    <span>✓</span>
+                </div>
+
+                <div>
+
+                    <p>Selected</p>
+
+                    <h2 id="selected">0</h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROGRESS ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <div class="dashboard-card progress-card">
+
+                <h2>Application Progress</h2>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+
+                        <span>Applied</span>
+
+                        <span id="appliedCount">0</span>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div
+                            id="appliedBar"
+                            class="progress-fill applied-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+
+                        <span>Shortlisted</span>
+
+                        <span id="shortlistedCount">0</span>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div
+                            id="shortlistedBar"
+                            class="progress-fill shortlisted-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+
+                        <span>Interview</span>
+
+                        <span id="interviewCount">0</span>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div
+                            id="interviewBar"
+                            class="progress-fill interview-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-title">
+
+                        <span>Selected</span>
+
+                        <span id="selectedCount">0</span>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div
+                            id="selectedBar"
+                            class="progress-fill selected-fill">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUCCESS RATE -->
+
+            <div class="dashboard-card success-card">
+
+                <h2>Success Rate</h2>
+
+
+                <div class="success-circle">
+
+                    <div class="success-inner">
+
+                        <span id="successRate">
+                            0%
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p>
+                    Percentage of applications that resulted in
+                    selection.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= APPLICATIONS ================= -->
+
+        <section
+            class="applications-section"
+            id="applications">
+
+
+            <div class="applications-heading">
+
+                <div>
+
+                    <h2>My Applications</h2>
+
+                    <p>
+                        Manage and track your job applications.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="export-btn"
+                    onclick="exportCSV()">
+
+                    ⇩ Export CSV
+
+                </button>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="filters">
+
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search company or job role...">
+
+                </div>
+
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Applied">
+                        Applied
+                    </option>
+
+                    <option value="Shortlisted">
+                        Shortlisted
+                    </option>
+
+                    <option value="Interview">
+                        Interview
+                    </option>
+
+                    <option value="Selected">
+                        Selected
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                </select>
+
+
+                <select id="priorityFilter">
+
+                    <option value="all">
+                        All Priority
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <select id="sortFilter">
+
+                    <option value="newest">
+                        Newest First
+                    </option>
+
+                    <option value="oldest">
+                        Oldest First
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- IMPORTANT: JavaScript expects applicationList -->
+
+            <div id="applicationList">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REMINDERS ================= -->
+
+        <section
+            class="applications-section reminders-section"
+            id="reminders">
+
+            <div class="applications-heading">
+
+                <div>
+
+                    <h2>Upcoming Reminders</h2>
+
+                    <p>
+                        Interviews and follow-up dates.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMPORTANT: JavaScript expects reminderList -->
+
+            <div
+                id="reminderList"
+                class="reminder-list">
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= ADD APPLICATION MODAL ================= -->
+
+    <div id="modal" class="modal-overlay">
+
+
+        <div class="modal-box">
+
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">
+                    Add Job Application
+                </h2>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    onclick="closeModal()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <form id="jobForm">
+
+
+                <input
+                    type="hidden"
+                    id="editId">
+
+
+                <div class="form-group">
+
+                    <label>Company Name</label>
+
+                    <input
+                        type="text"
+                        id="company"
+                        placeholder="e.g. Infosys"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Job Role</label>
+
+                    <input
+                        type="text"
+                        id="role"
+                        placeholder="e.g. Software Developer"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>Application Date</label>
+
+                        <input
+                            type="date"
+                            id="applicationDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Status</label>
+
+                        <select id="status">
+
+                            <option value="Applied">
+                                Applied
+                            </option>
+
+                            <option value="Shortlisted">
+                                Shortlisted
+                            </option>
+
+                            <option value="Interview">
+                                Interview
+                            </option>
+
+                            <option value="Selected">
+                                Selected
+                            </option>
+
+                            <option value="Rejected">
+                                Rejected
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>Priority</label>
+
+                        <select id="priority">
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Interview Date</label>
+
+                        <input
+                            type="date"
+                            id="interviewDate">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Follow-up Date</label>
+
+                    <input
+                        type="date"
+                        id="followupDate">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Job Link</label>
+
+                    <input
+                        type="url"
+                        id="jobLink"
+                        placeholder="https://example.com">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Notes</label>
+
+                    <textarea
+                        id="notes"
+                        rows="3"
+                        placeholder="Add notes...">
+                    </textarea>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        Save Application
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
